@@ -23,7 +23,7 @@ function(err, data) {
 	{
 		for(var video of data["data"])
 		{
-			console.log("Preview : " + video["pictures"]["base_link"]  + " Video name : " + video["name"] + " Video link : " + video["link"] + " Video duration : " + video["duration"] + " Quality  : " + video["height"] + " Channel Name : " + video["user"]["name"] + " Created : " + (new Date().getFullYear() - parseInt(video["created_time"].substring(0,4))) + " years ago" +  " Description : " + video["description"]);
+			console.log("Preview : " + video["pictures"]["base_link"]  + " Video name : " + video["name"] + " Video link : " + video["link"] + " Channel Name : " + video["user"]["name"] + " Created : " + (new Date().getFullYear() - parseInt(video["created_time"].substring(0,4))) + " years ago" +  " Description : " + video["description"]);
 		}
 	}
 });
