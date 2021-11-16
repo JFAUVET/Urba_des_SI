@@ -1,0 +1,35 @@
+<html>
+
+<script src="https://apis.google.com/js/api.js"></script>
+<script>
+
+  function loadClient() 
+  {
+    gapi.client.setApiKey("AIzaSyDDg9GpIlU0yKRwkCX97Pji1PG4xg8Ou7E");
+    return gapi.client.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+        .then(function() { execute();},
+              function(err) { console.error("Error loading GAPI client for API", err); });
+  }
+  
+  function execute() {
+    return gapi.client.youtube.search.list({
+	 "part": [
+        "snippet"
+      ],
+	 "q": "trailer inception"})
+        .then(function(response) {
+				for(var video of response.result["items"])
+				{
+					
+					console.log("Video ID : " + video["id"]["videoId"] + " Preview : " + video["snippet"]["thumbnails"]["high"]["url"] + " Video Name : " + video["snippet"]["title"] + " Channel Name : " + video["snippet"]["channelTitle"] + " Age : " + (new Date().getFullYear() - parseInt(video["snippet"]["publishedAt"].substring(0,4))) + " years" + " Description : " + video["snippet"]["description"] );
+				}
+              },
+              function(err) { console.error("Execute error", err); });
+  }
+  gapi.load("client:auth");
+  
+  
+</script>
+<button onclick="loadClient();">Search</button>
+
+</html>
