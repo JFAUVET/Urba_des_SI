@@ -1,0 +1,67 @@
+<html>
+<script>
+async function getAll(keyword) 
+{
+	var vidata=new Array();
+	
+	//GETYT
+	var url = 'https://content-youtube.googleapis.com/youtube/v3/search?part=snippet&q=' + keyword + '&key=AIzaSyDDg9GpIlU0yKRwkCX97Pji1PG4xg8Ou7E&maxResults=10';
+	var obj = await (await fetch(url)).json();
+	
+	var i=0;
+	vidata["YTP"] = new Array();
+	for(var video of obj["items"])
+	{
+		vidata["YTP"][i] = new Array();
+		
+		vidata["YTP"][i]["link"] = "https://www.youtube.com/watch?v=" + video["id"]["videoId"];
+		vidata["YTP"][i]["prev"] = video["snippet"]["thumbnails"]["high"]["url"];
+		vidata["YTP"][i]["title"] = video["snippet"]["title"];
+		vidata["YTP"][i]["chname"] = video["snippet"]["channelTitle"];
+		vidata["YTP"][i]["age"] = (new Date().getFullYear() - parseInt(video["snippet"]["publishedAt"].substring(0,4)));
+		vidata["YTP"][i]["desc"] = video["snippet"]["description"];
+		i++;
+	}
+	
+	//GetVim
+	var url = 'https://api.vimeo.com/videos?query='+ keyword +'&client_id=8e27e8883a3375968dc44d6cf7ccac05b1e6d94c&client_secret=J0td4NdiXHuLyeAc+vZOgJeMaYt4fg09E3jd/xUOYeDQa9P8kj+Yeoh/wGuV7Wgq0zAG8L18KwrnJFpY5EUyLYe6P2xDCzVhYt9HavOlcZjR9JhvguAJP1p186zqw7Ld&access_token=8368899522fa35fd825e92355b913d47&page=1&per_page=10&sort=relevant&direction=desc&filter=CC';
+	var obj = await (await fetch(url)).json();
+	
+	i=0;
+	vidata["VIM"] = new Array();
+	for(var video of obj["data"])
+	{
+		vidata["VIM"][i] = new Array();
+		
+		vidata["VIM"][i]["link"] = video["link"];
+		vidata["VIM"][i]["prev"] = video["pictures"]["base_link"];
+		vidata["VIM"][i]["title"] = video["name"];
+		vidata["VIM"][i]["chname"] = video["user"]["name"];
+		vidata["VIM"][i]["age"] = (new Date().getFullYear() - parseInt(video["created_time"].substring(0,4)));
+		vidata["VIM"][i]["desc"] = video["description"];
+		i++;
+	}
+	
+	//GetDai
+	var url = 'https://api.dailymotion.com/videos?fields=description,channel.name,id,thumbnail_url,title,created_time&search='+keyword;
+	var obj = await (await fetch(url)).json();
+	
+	i=0;
+	vidata["DAI"] = new Array();
+	for(var video of obj["list"])
+	{
+		vidata["DAI"][i]= new Array();
+		
+		vidata["DAI"][i]["link"] = "https://www.dailymotion.com/video/" + video["id"];
+		vidata["DAI"][i]["prev"] = video["thumbnail_url"];
+		vidata["DAI"][i]["title"] = video["title"];
+		vidata["DAI"][i]["chname"] = video["channel.name"];
+		vidata["DAI"][i]["age"] = (new Date().getFullYear() - new Date(video["created_time"]* 1000).getFullYear());
+		vidata["DAI"][i]["desc"] = video["description"];
+		i++;
+	}
+return vidata;
+}
+console.log(getAll("trailer inception"));
+</script>
+</html>
