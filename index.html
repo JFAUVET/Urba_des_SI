@@ -749,6 +749,7 @@ createUserWithEmailAndPassword(auth, email, pass)
   .then((userCredential) => {
     alert("Welcome to our website " + email + " !");
     const user = userCredential.user;
+	document.getElementsByClassName("mfp-close")[0].click();
     // ...
   })
   .catch((error) => {
@@ -766,7 +767,6 @@ var cpass = document.getElementById("cpass").value;
 	const auth = getAuth();
 	signInWithEmailAndPassword(auth, cemail, cpass)
 	.then((userCredential) => {
-    alert("Logued in! ");
     const user = userCredential.user;
     // ...
 	  alert("Logued in! ");
