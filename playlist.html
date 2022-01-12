@@ -50,24 +50,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<div class="header-top-right">
 					<div class="signin">
-						<a href="/Urba_des_SI/index.html" class="play-icon popup-with-zoom-anim" onclick="javascript:whatever()">
+						<a href="." class="play-icon popup-with-zoom-anim" onclick="signout()">
 							Logout
 						</a>
-						<script>
-							$(document).ready(function () {
-								$('.popup-with-zoom-anim').magnificPopup({
-									type: 'inline',
-									fixedContentPos: false,
-									fixedBgPos: true,
-									overflowY: 'auto',
-									closeBtnInside: true,
-									preloader: false,
-									midClick: true,
-									removalDelay: 300,
-									mainClass: 'my-mfp-zoom-in'
-								});
-							});
-						</script>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -178,5 +163,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/bootstrap.min.js"></script>
 </body>
-
+<script>
+		window.signout = function () {
+		
+		window.localStorage.removeItem('firebase:authUser');
+		window.indexedDB.deleteDatabase("firebaseLocalStorageDb");
+		}
+</script>
 </html>
