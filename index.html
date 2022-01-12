@@ -26,7 +26,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
 
 <body>
-
+<script>
+window.onload = function(e){ 
+   if(!chck())
+	{
+		document.getElementById('signup').style.visibility = '';
+		document.getElementById('login').style.visibility = '';
+		document.getElementById('logout').style.visibility = 'hidden';
+		document.getElementById('playlistm').style.visibility = 'hidden';
+	}
+	else
+	{
+		document.getElementById('signup').style.visibility = 'hidden';
+		document.getElementById('login').style.visibility = 'hidden';
+		document.getElementById('logout').style.visibility = '';
+		document.getElementById('playlistm').style.visibility = '';
+	}
+	
+}	
+</script>
+</script>
 	<nav class="navbar navbar-inverse navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -43,13 +62,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<div class="top-search">
-					<form class="navbar-form navbar-right">
-						<input type="text" class="form-control" placeholder="Search...">
-						<input type="submit" value=" ">
+					<form class="navbar-form navbar-right" onsubmit="getAll(); return false;">
+						<input type="text" id="film" class="form-control" placeholder="Search...">
+						<input type="submit" value="">
 					</form>
 				</div>
 				<div class="header-top-right">
-					<div class="signin">
+					<div class="signin" id="signup" style="visibility : hidden">
 						<a href="#small-dialog3" class="play-icon popup-with-zoom-anim">Sign Up</a>
 						<!-- pop-up-box -->
 						<script type="text/javascript" src="js/modernizr.custom.min.js"></script>
@@ -102,7 +121,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							});
 						</script>
 					</div>
-					<div class="signin">
+					<div class="signin" id="login" style="visibility : hidden">
 						<a href="#small-dialog" class="play-icon popup-with-zoom-anim">Login</a>
 						<div id="small-dialog" class="mfp-hide">
 							<h3>Login</h3>
@@ -121,8 +140,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="clearfix"> </div>
 						</div>
 					</div>
-					<div class="signin">
-						<a href="/Urba_des_SI/index.html" class="play-icon popup-with-zoom-anim" onclick="javascript:whatever()">
+					<div class="signin" id="logout">
+						<a href="/Urba_des_SI/index.html" class="play-icon popup-with-zoom-anim" onclick="javascript:signout();">
 							Logout
 						</a>
 					</div>
@@ -149,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</a>
 				</li>
 				<li>
-					<a href="playlist.html" class="movie-icon">
+					<a href="playlist.html" id="playlistm" class="movie-icon" style="visibility : hidden">
 						<span class="glyphicon glyphicon-film" aria-hidden="true"></span>
 						My playlist
 					</a>
@@ -174,7 +193,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<script>
 					function display_videos_search() {
-						total_num_video = 10;
+						total_num_video = 30;
 						nbr_rows = Math.ceil(total_num_video / 4)
 						for (let row = 0; row < nbr_rows; row++) {
 							var completelist = document.getElementById("video_list_search");
@@ -185,7 +204,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							for (let video = 0; video < video_in_row; video++) {
 								var completelist = document.getElementById("row_" + row);
 								let nbr = row * 4 + video;
-								completelist.innerHTML += "<div class=\"col-md-3 resent-grid recommended-grid\" id=\"video_" + nbr + "\">\n<div class=\"resent-grid-img recommended-grid-img\">\n<a class=\"popup-daily_motion\" href=\"https://www.dailymotion.com/video/x870wq7\"><img src=\"images/r1.jpg\" alt=\"\" /></a>\n<img src=\"images/add_playlist.png\" class=\"playlist_add\" onClick=\"javascript:whatever()\" id=\"btn_add_" + nbr + "\" />\n<div class=\"time small-time\">\n<p id=\"length_" + nbr + "\">2:34</p>\n</div>\n<div class=\"clck small-clck\">\n<span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span>\n</div>\n</div>\n<div class=\"resent-grid-info recommended-grid-info video-info-grid\">\n<h5><a class=\"popup-daily_motion title\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"title_" + nbr + "\">Varius sit sed viverra viverra nullam nullam interdum metus</a>\n</h5>\n<ul class=\"video_info_bot\">\n<li>\n<p class=\"author author-info\"><a href=\"#\" class=\"author\" id=\"author_" + nbr + "\">John Maniya</a></p>\n</li>\n<li class=\"right-list\">\n<p class=\"views views-info\" id=\"age_" + nbr + "\">2 years ago</p>\n</li>\n</ul>\n</div>\n</div>";
+								completelist.innerHTML += "<div class=\"col-md-3 resent-grid recommended-grid\" id=\"video_" + nbr + "\">\n<div class=\"resent-grid-img recommended-grid-img\">\n<a class=\"popup-daily_motion\" href=\"https://www.dailymotion.com/video/x870wq7\"><img src=\"images/r1.jpg\" alt=\"\" /></a>\n<img src=\"images/add_playlist.png\"  class=\"playlist_add\" onClick=\"javascript:whatever()\" id=\"btn_add_" + nbr + "\" />\n<div class=\"time small-time\">\n<p id=\"length_" + nbr + "\">2:34</p>\n</div>\n<div class=\"clck small-clck\">\n<span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span>\n</div>\n</div>\n<div class=\"resent-grid-info recommended-grid-info video-info-grid\">\n<h5><a class=\"popup-daily_motion title\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"title_" + nbr + "\">Varius sit sed viverra viverra nullam nullam interdum metus</a>\n</h5>\n<ul class=\"video_info_bot\">\n<li>\n<p class=\"author author-info\"><a href=\"#\" class=\"author\" id=\"author_" + nbr + "\">John Maniya</a></p>\n</li>\n<li class=\"right-list\">\n<p class=\"views views-info\" id=\"age_" + nbr + "\">2 years ago</p>\n</li>\n</ul>\n</div>\n</div>";
 							}
 							completelist.innerHTML += "<div class=\"clearfix\"> </div>";
 						}
@@ -224,10 +243,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			vidata["YTP"] = new Array();
 			for (var video of obj["items"]) {
 				vidata["YTP"][i] = new Array();
-
+				
 				vidata["YTP"][i]["link"] = "https://www.youtube.com/watch?v=" + video["id"]["videoId"];
 				vidata["YTP"][i]["prev"] = video["snippet"]["thumbnails"]["high"]["url"];
 				vidata["YTP"][i]["title"] = video["snippet"]["title"];
+				document.getElementById("title_0").innerText = video["snippet"]["title"];
 				vidata["YTP"][i]["chname"] = video["snippet"]["channelTitle"];
 				vidata["YTP"][i]["age"] = (new Date().getFullYear() - parseInt(video["snippet"]["publishedAt"].substring(0, 4)));
 				vidata["YTP"][i]["desc"] = video["snippet"]["description"];
@@ -269,8 +289,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				vidata["DAI"][i]["desc"] = video["description"];
 				i++;
 			}
+			console.log(vidata);
+			
 			return vidata;
-
 		}
 	</script>
 	<script type="module">
@@ -313,13 +334,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		window.login = function () {
 			var cemail = document.getElementById("cemail").value;
 			var cpass = document.getElementById("cpass").value;
-
 			const auth = getAuth();
 			signInWithEmailAndPassword(auth, cemail, cpass)
 				.then((userCredential) => {
 					const user = userCredential.user;
-					// ...
-					alert("Logued in! ");
+					window.localStorage.setItem('firebase:authUser', "");
+					document.getElementById('signup').style.visibility = 'hidden';
+					document.getElementById('login').style.visibility = 'hidden';
+					document.getElementById('logout').style.visibility = '';
+					document.getElementById('playlistm').style.visibility = '';
+					alert("Logged in! ");
 					document.getElementsByClassName("mfp-close")[0].click();
 				})
 				.catch((error) => {
@@ -330,14 +354,34 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		}
 
 		window.signout = function () {
+		document.getElementById('signup').style.visibility = '';
+		document.getElementById('login').style.visibility = '';
+		document.getElementById('logout').style.visibility = 'hidden';
+		document.getElementById('playlistm').style.visibility = 'hidden';
+		window.localStorage.removeItem('firebase:authUser');
+		window.indexedDB.deleteDatabase("firebaseLocalStorageDb");
 			const auth = getAuth();
 			signOut(auth).then(() => {
-				// Sign-out successful.
+			alert("Sign-out successful !")
 			}).catch((error) => {
 				// An error happened.
 			});
 		}
+window.chck = function()
+{
+	for (var key in localStorage)
+	{
+		if(key.includes("firebase:authUser"))
+		{
+			return true;
+		}
+		else
+			return false;
+	}
+}
+
 	</script>
+	
 </body>
 
 </html>
