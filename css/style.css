@@ -1080,6 +1080,13 @@ select.form-control.bfh-countries:hover {
     background: #f7f7f7;
     padding: 1em;
 }
+.thumbnail{
+	width: 377.95px;
+	height: 212.6px;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+}
 .published h4{
     color: #717171;
     font-size: 13px;
