@@ -59,8 +59,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div id="small-dialog3" class="mfp-hide">
 							<h3>Create Account</h3>
 							<div class="signup">
-							<form onsubmit="signup(); return false">
-								<input type="text" id ="email" class="email" placeholder="Email" required="required"
+								<form onsubmit="signup(); return false">
+									<input type="text" id="email" class="email" placeholder="Email" required="required"
 										pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?" title="Enter a valid email" />
 									<input type="password" id="pass" placeholder="Password" required="required" pattern=".{6,}"
 										title="Minimum 6 characters required" autocomplete="off" />
@@ -85,66 +85,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</form>
 							</div>
 							<div class="clearfix"> </div>
-						</div>
-						<div id="small-dialog4" class="mfp-hide">
-							<h3>Feedback</h3>
-							<div class="feedback-grids">
-								<div class="feedback-grid">
-									<p>Suspendisse tristique magna ut urna pellentesque, ut egestas velit faucibus. Nullam mattis lectus
-										ullamcorper dui dignissim, sit amet egestas orci ullamcorper.</p>
-								</div>
-								<div class="button-bottom">
-									<p><a href="#small-dialog" class="play-icon popup-with-zoom-anim">Log in</a> to get started.</p>
-								</div>
-							</div>
-						</div>
-						<div id="small-dialog5" class="mfp-hide">
-							<h3>Help</h3>
-							<div class="help-grid">
-								<p>Suspendisse tristique magna ut urna pellentesque, ut egestas velit faucibus. Nullam mattis lectus
-									ullamcorper dui dignissim, sit amet egestas orci ullamcorper.</p>
-							</div>
-							<div class="help-grids">
-								<div class="help-button-bottom">
-									<p><a href="#small-dialog4" class="play-icon popup-with-zoom-anim">Feedback</a></p>
-								</div>
-								<div class="help-button-bottom">
-									<p><a href="#small-dialog6" class="play-icon popup-with-zoom-anim">Lorem ipsum dolor sit amet</a></p>
-								</div>
-								<div class="help-button-bottom">
-									<p><a href="#small-dialog6" class="play-icon popup-with-zoom-anim">Nunc vitae rutrum enim</a></p>
-								</div>
-								<div class="help-button-bottom">
-									<p><a href="#small-dialog6" class="play-icon popup-with-zoom-anim">Mauris at volutpat leo</a></p>
-								</div>
-								<div class="help-button-bottom">
-									<p><a href="#small-dialog6" class="play-icon popup-with-zoom-anim">Mauris vehicula rutrum velit</a>
-									</p>
-								</div>
-								<div class="help-button-bottom">
-									<p><a href="#small-dialog6" class="play-icon popup-with-zoom-anim">Aliquam eget ante non orci fac</a>
-									</p>
-								</div>
-							</div>
-						</div>
-						<div id="small-dialog6" class="mfp-hide">
-							<div class="video-information-text">
-								<h4>Video information & settings</h4>
-								<p>Suspendisse tristique magna ut urna pellentesque, ut egestas velit faucibus. Nullam mattis lectus
-									ullamcorper dui dignissim, sit amet egestas orci ullamcorper.</p>
-								<ol>
-									<li>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt.
-									</li>
-									<li>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt.
-									</li>
-									<li>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt.
-									</li>
-									<li>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt.
-									</li>
-									<li>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt.
-									</li>
-								</ol>
-							</div>
 						</div>
 						<script>
 							$(document).ready(function () {
@@ -180,6 +120,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 							<div class="clearfix"> </div>
 						</div>
+					</div>
+					<div class="signin">
+						<a href="/Urba_des_SI/index.html" class="play-icon popup-with-zoom-anim" onclick="javascript:whatever()">
+							Logout
+						</a>
 					</div>
 					<div class="clearfix"> </div>
 				</div>
@@ -229,18 +174,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 				<script>
 					function display_videos_search() {
-						total_num_video=10;
-						nbr_rows=Math.ceil(total_num_video/4)
+						total_num_video = 10;
+						nbr_rows = Math.ceil(total_num_video / 4)
 						for (let row = 0; row < nbr_rows; row++) {
 							var completelist = document.getElementById("video_list_search");
-							completelist.innerHTML += "<div class=\"recommended-grids\" id=\"row_"+row+"\">\n";
+							completelist.innerHTML += "<div class=\"recommended-grids\" id=\"row_" + row + "\">\n";
 							let video_in_row;
-							if ( (row+1)*4<=total_num_video ) video_in_row=4;
-							else video_in_row=total_num_video%4
-							for (let video=0; video<video_in_row; video++){
-								var completelist = document.getElementById("row_"+row);
-								let nbr=row*4+video;
-								completelist.innerHTML += "<div class=\"col-md-3 resent-grid recommended-grid\" id=\"video_"+nbr+"\">\n<div class=\"resent-grid-img recommended-grid-img\">\n<a class=\"popup-daily_motion\" href=\"https://www.dailymotion.com/video/x870wq7\"><img src=\"images/r1.jpg\" alt=\"\" /></a>\n<img src=\"images/add_playlist.png\" class=\"playlist_add\" onClick=\"javascript:whatever()\" id=\"btn_add_"+nbr+"\" />\n<div class=\"time small-time\">\n<p id=\"length_"+nbr+"\">2:34</p>\n</div>\n<div class=\"clck small-clck\">\n<span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span>\n</div>\n</div>\n<div class=\"resent-grid-info recommended-grid-info video-info-grid\">\n<h5><a class=\"popup-daily_motion title\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"title_"+nbr+"\">Varius sit sed viverra viverra nullam nullam interdum metus</a>\n</h5>\n<ul class=\"video_info_bot\">\n<li>\n<p class=\"author author-info\"><a href=\"#\" class=\"author\" id=\"author_"+nbr+"\">John Maniya</a></p>\n</li>\n<li class=\"right-list\">\n<p class=\"views views-info\" id=\"age_"+nbr+"\">2 years ago</p>\n</li>\n</ul>\n</div>\n</div>";
+							if ((row + 1) * 4 <= total_num_video) video_in_row = 4;
+							else video_in_row = total_num_video % 4
+							for (let video = 0; video < video_in_row; video++) {
+								var completelist = document.getElementById("row_" + row);
+								let nbr = row * 4 + video;
+								completelist.innerHTML += "<div class=\"col-md-3 resent-grid recommended-grid\" id=\"video_" + nbr + "\">\n<div class=\"resent-grid-img recommended-grid-img\">\n<a class=\"popup-daily_motion\" href=\"https://www.dailymotion.com/video/x870wq7\"><img src=\"images/r1.jpg\" alt=\"\" /></a>\n<img src=\"images/add_playlist.png\" class=\"playlist_add\" onClick=\"javascript:whatever()\" id=\"btn_add_" + nbr + "\" />\n<div class=\"time small-time\">\n<p id=\"length_" + nbr + "\">2:34</p>\n</div>\n<div class=\"clck small-clck\">\n<span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span>\n</div>\n</div>\n<div class=\"resent-grid-info recommended-grid-info video-info-grid\">\n<h5><a class=\"popup-daily_motion title\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"title_" + nbr + "\">Varius sit sed viverra viverra nullam nullam interdum metus</a>\n</h5>\n<ul class=\"video_info_bot\">\n<li>\n<p class=\"author author-info\"><a href=\"#\" class=\"author\" id=\"author_" + nbr + "\">John Maniya</a></p>\n</li>\n<li class=\"right-list\">\n<p class=\"views views-info\" id=\"age_" + nbr + "\">2 years ago</p>\n</li>\n</ul>\n</div>\n</div>";
 							}
 							completelist.innerHTML += "<div class=\"clearfix\"> </div>";
 						}
@@ -656,139 +601,133 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script src="js/bootstrap.min.js"></script>
 	<script>
-	async function getAll()
-{
-	var keyword = document.getElementById("film").value;
-	
-	var vidata=new Array();
-	
-	//GETYT
-	var url = 'https://content-youtube.googleapis.com/youtube/v3/search?part=snippet&q=' + keyword + '&key=AIzaSyDDg9GpIlU0yKRwkCX97Pji1PG4xg8Ou7E&maxResults=10';
-	var obj = await (await fetch(url)).json();
-	
-	var i=0;
-	vidata["YTP"] = new Array();
-	for(var video of obj["items"])
-	{
-		vidata["YTP"][i] = new Array();
-		
-		vidata["YTP"][i]["link"] = "https://www.youtube.com/watch?v=" + video["id"]["videoId"];
-		vidata["YTP"][i]["prev"] = video["snippet"]["thumbnails"]["high"]["url"];
-		vidata["YTP"][i]["title"] = video["snippet"]["title"];
-		vidata["YTP"][i]["chname"] = video["snippet"]["channelTitle"];
-		vidata["YTP"][i]["age"] = (new Date().getFullYear() - parseInt(video["snippet"]["publishedAt"].substring(0,4)));
-		vidata["YTP"][i]["desc"] = video["snippet"]["description"];
-		i++;
-	}
-	
-	//GetVim
-	var url = 'https://api.vimeo.com/videos?query='+ keyword +'&client_id=8e27e8883a3375968dc44d6cf7ccac05b1e6d94c&client_secret=J0td4NdiXHuLyeAc+vZOgJeMaYt4fg09E3jd/xUOYeDQa9P8kj+Yeoh/wGuV7Wgq0zAG8L18KwrnJFpY5EUyLYe6P2xDCzVhYt9HavOlcZjR9JhvguAJP1p186zqw7Ld&access_token=8368899522fa35fd825e92355b913d47&page=1&per_page=10&sort=relevant&direction=desc&filter=CC';
-	var obj = await (await fetch(url)).json();
-	
-	i=0;
-	vidata["VIM"] = new Array();
-	for(var video of obj["data"])
-	{
-		vidata["VIM"][i] = new Array();
-		
-		vidata["VIM"][i]["link"] = video["link"];
-		vidata["VIM"][i]["prev"] = video["pictures"]["base_link"];
-		vidata["VIM"][i]["title"] = video["name"];
-		vidata["VIM"][i]["chname"] = video["user"]["name"];
-		vidata["VIM"][i]["age"] = (new Date().getFullYear() - parseInt(video["created_time"].substring(0,4)));
-		vidata["VIM"][i]["desc"] = video["description"];
-		i++;
-	}
-	
-	//GetDai
-	var url = 'https://api.dailymotion.com/videos?fields=description,channel.name,id,thumbnail_url,title,created_time&search='+keyword;
-	var obj = await (await fetch(url)).json();
-	
-	i=0;
-	vidata["DAI"] = new Array();
-	for(var video of obj["list"])
-	{
-		vidata["DAI"][i]= new Array();
-		
-		vidata["DAI"][i]["link"] = "https://www.dailymotion.com/video/" + video["id"];
-		vidata["DAI"][i]["prev"] = video["thumbnail_url"];
-		vidata["DAI"][i]["title"] = video["title"];
-		vidata["DAI"][i]["chname"] = video["channel.name"];
-		vidata["DAI"][i]["age"] = (new Date().getFullYear() - new Date(video["created_time"]* 1000).getFullYear());
-		vidata["DAI"][i]["desc"] = video["description"];
-		i++;
-	}	
-return vidata;
+		async function getAll() {
+			var keyword = document.getElementById("film").value;
 
-}
-</script>
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
-  import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
-  
-  const firebaseConfig = {
-    apiKey: "AIzaSyDLhwU3Gn6TlAWSL7EMQjIkVMwP-99RHHc",
-    authDomain: "urbabdd.firebaseapp.com",
-    databaseURL: "https://urbabdd-default-rtdb.firebaseio.com",
-    projectId: "urbabdd",
-    storageBucket: "urbabdd.appspot.com",
-    messagingSenderId: "194220103248",
-    appId: "1:194220103248:web:9fc7fb29b5b9e092ca6355"
-  };
-  
-  const app = initializeApp(firebaseConfig);
+			var vidata = new Array();
 
- window.signup = function(){
-var email = document.getElementById("email").value;
-var pass = document.getElementById("pass").value;
+			//GETYT
+			var url = 'https://content-youtube.googleapis.com/youtube/v3/search?part=snippet&q=' + keyword + '&key=AIzaSyDDg9GpIlU0yKRwkCX97Pji1PG4xg8Ou7E&maxResults=10';
+			var obj = await (await fetch(url)).json();
 
-  
-  // Inscription
-const auth = getAuth();
-createUserWithEmailAndPassword(auth, email, pass)
-  .then((userCredential) => {
-    alert("Welcome to our website " + email + " !");
-    const user = userCredential.user;
-	document.getElementsByClassName("mfp-close")[0].click();
-    // ...
-  })
-  .catch((error) => {
-    const errorCode = error.code;
-    const errorMessage = error.message;
-    // ..
-  });    
-}
+			var i = 0;
+			vidata["YTP"] = new Array();
+			for (var video of obj["items"]) {
+				vidata["YTP"][i] = new Array();
 
-window.login = function()
-{
-var cemail = document.getElementById("cemail").value;
-var cpass = document.getElementById("cpass").value;
+				vidata["YTP"][i]["link"] = "https://www.youtube.com/watch?v=" + video["id"]["videoId"];
+				vidata["YTP"][i]["prev"] = video["snippet"]["thumbnails"]["high"]["url"];
+				vidata["YTP"][i]["title"] = video["snippet"]["title"];
+				vidata["YTP"][i]["chname"] = video["snippet"]["channelTitle"];
+				vidata["YTP"][i]["age"] = (new Date().getFullYear() - parseInt(video["snippet"]["publishedAt"].substring(0, 4)));
+				vidata["YTP"][i]["desc"] = video["snippet"]["description"];
+				i++;
+			}
 
-	const auth = getAuth();
-	signInWithEmailAndPassword(auth, cemail, cpass)
-	.then((userCredential) => {
-    const user = userCredential.user;
-    // ...
-	  alert("Logued in! ");
-	  document.getElementsByClassName("mfp-close")[0].click();
-  })
-  .catch((error) => {
-  alert("Wrong credentials");
-    const errorCode = error.code;
-    const errorMessage = error.message;
-  });
-}
+			//GetVim
+			var url = 'https://api.vimeo.com/videos?query=' + keyword + '&client_id=8e27e8883a3375968dc44d6cf7ccac05b1e6d94c&client_secret=J0td4NdiXHuLyeAc+vZOgJeMaYt4fg09E3jd/xUOYeDQa9P8kj+Yeoh/wGuV7Wgq0zAG8L18KwrnJFpY5EUyLYe6P2xDCzVhYt9HavOlcZjR9JhvguAJP1p186zqw7Ld&access_token=8368899522fa35fd825e92355b913d47&page=1&per_page=10&sort=relevant&direction=desc&filter=CC';
+			var obj = await (await fetch(url)).json();
 
-window.signout = function()
-{
-const auth = getAuth();
-signOut(auth).then(() => {
-  // Sign-out successful.
-}).catch((error) => {
-  // An error happened.
-});
-}
-</script>
+			i = 0;
+			vidata["VIM"] = new Array();
+			for (var video of obj["data"]) {
+				vidata["VIM"][i] = new Array();
+
+				vidata["VIM"][i]["link"] = video["link"];
+				vidata["VIM"][i]["prev"] = video["pictures"]["base_link"];
+				vidata["VIM"][i]["title"] = video["name"];
+				vidata["VIM"][i]["chname"] = video["user"]["name"];
+				vidata["VIM"][i]["age"] = (new Date().getFullYear() - parseInt(video["created_time"].substring(0, 4)));
+				vidata["VIM"][i]["desc"] = video["description"];
+				i++;
+			}
+
+			//GetDai
+			var url = 'https://api.dailymotion.com/videos?fields=description,channel.name,id,thumbnail_url,title,created_time&search=' + keyword;
+			var obj = await (await fetch(url)).json();
+
+			i = 0;
+			vidata["DAI"] = new Array();
+			for (var video of obj["list"]) {
+				vidata["DAI"][i] = new Array();
+
+				vidata["DAI"][i]["link"] = "https://www.dailymotion.com/video/" + video["id"];
+				vidata["DAI"][i]["prev"] = video["thumbnail_url"];
+				vidata["DAI"][i]["title"] = video["title"];
+				vidata["DAI"][i]["chname"] = video["channel.name"];
+				vidata["DAI"][i]["age"] = (new Date().getFullYear() - new Date(video["created_time"] * 1000).getFullYear());
+				vidata["DAI"][i]["desc"] = video["description"];
+				i++;
+			}
+			return vidata;
+
+		}
+	</script>
+	<script type="module">
+		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-app.js";
+		import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.6.2/firebase-auth.js";
+
+		const firebaseConfig = {
+			apiKey: "AIzaSyDLhwU3Gn6TlAWSL7EMQjIkVMwP-99RHHc",
+			authDomain: "urbabdd.firebaseapp.com",
+			databaseURL: "https://urbabdd-default-rtdb.firebaseio.com",
+			projectId: "urbabdd",
+			storageBucket: "urbabdd.appspot.com",
+			messagingSenderId: "194220103248",
+			appId: "1:194220103248:web:9fc7fb29b5b9e092ca6355"
+		};
+
+		const app = initializeApp(firebaseConfig);
+
+		window.signup = function () {
+			var email = document.getElementById("email").value;
+			var pass = document.getElementById("pass").value;
+
+
+			// Inscription
+			const auth = getAuth();
+			createUserWithEmailAndPassword(auth, email, pass)
+				.then((userCredential) => {
+					alert("Welcome to our website " + email + " !");
+					const user = userCredential.user;
+					document.getElementsByClassName("mfp-close")[0].click();
+					// ...
+				})
+				.catch((error) => {
+					const errorCode = error.code;
+					const errorMessage = error.message;
+					// ..
+				});
+		}
+
+		window.login = function () {
+			var cemail = document.getElementById("cemail").value;
+			var cpass = document.getElementById("cpass").value;
+
+			const auth = getAuth();
+			signInWithEmailAndPassword(auth, cemail, cpass)
+				.then((userCredential) => {
+					const user = userCredential.user;
+					// ...
+					alert("Logued in! ");
+					document.getElementsByClassName("mfp-close")[0].click();
+				})
+				.catch((error) => {
+					alert("Wrong credentials");
+					const errorCode = error.code;
+					const errorMessage = error.message;
+				});
+		}
+
+		window.signout = function () {
+			const auth = getAuth();
+			signOut(auth).then(() => {
+				// Sign-out successful.
+			}).catch((error) => {
+				// An error happened.
+			});
+		}
+	</script>
 </body>
 
 </html>
