@@ -207,7 +207,7 @@ getAll();
 							completelist.innerHTML += "<div class=\"clearfix\"> </div>";
 						}
 					}
-				
+				display_videos_search();
 				</script>
 			</div>
 		</div>
@@ -229,7 +229,6 @@ getAll();
 	<script src="js/bootstrap.min.js"></script>
 	<script>
 		async function getAll() {
-		display_videos_search();
 			var keyword = document.getElementById("film").value;
 			if(keyword == "")
 				keyword = "interstellar trailer";
@@ -242,7 +241,7 @@ getAll();
 			try
 			{
 				for (var video of obj["items"]) {
-					
+					document.getElementById("video_" + i).style.display = '';
 					document.getElementById("link_thumb_" + i).href = "https://www.youtube.com/watch?v=" + video["id"]["videoId"];
 					document.getElementById("title_" + i).href = "https://www.youtube.com/watch?v=" + video["id"]["videoId"];
 					document.getElementById("thumb_" + i).src = video["snippet"]["thumbnails"]["high"]["url"];
@@ -257,7 +256,7 @@ getAll();
 			{
 				for (let j = 0; j <  10; j++)
 				{
-					document.getElementById("video_" + j).remove();
+					document.getElementById("video_" + j).style.display = 'none';
 				}
 				i=10;
 				
@@ -270,7 +269,7 @@ getAll();
 			try
 			{
 				for (var video of obj["data"]) {
-		
+					document.getElementById("video_" + i).style.display = '';
 					document.getElementById("link_thumb_" + i).href = video["link"];
 					document.getElementById("title_" + i).href =video["link"];
 					document.getElementById("thumb_" + i).src = video["pictures"]["base_link"];
@@ -285,7 +284,7 @@ getAll();
 			{
 				for (let j = 10; j <  20; j++)
 				{
-					document.getElementById("video_" + j).remove();
+					document.getElementById("video_" + j).style.display = 'none';
 				}
 				i=20;
 			}
@@ -295,7 +294,7 @@ getAll();
 
 			try{
 			for (var video of obj["list"]) {
-		
+				document.getElementById("video_" + i).style.display = '';
 				document.getElementById("link_thumb_" + i).href = "https://www.dailymotion.com/video/" + video["id"];
 				document.getElementById("title_" + i).href = "https://www.dailymotion.com/video/" + video["id"];
 				document.getElementById("thumb_" + i).src = video["thumbnail_url"];
@@ -310,7 +309,7 @@ getAll();
 			{
 				for (let j = 20; j <  30; j++)
 				{
-					document.getElementById("video_" + j).remove();
+					document.getElementById("video_" + j).style.display = 'none';
 				}
 				i=30;
 			}
