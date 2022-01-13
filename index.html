@@ -248,7 +248,7 @@ getAll();
 					document.getElementById("title_" + i).innerText = video["snippet"]["title"];
 					document.getElementById("author_" + i).innerText = video["snippet"]["channelTitle"];
 					document.getElementById("age_" + i).innerText = (new Date().getFullYear() - parseInt(video["snippet"]["publishedAt"].substring(0, 4))) + " years ago";
-					//vidata[i]["desc"] = video["snippet"]["description"];
+					document.getElementById("description_" + i).innerText = video["snippet"]["description"];
 					i++;
 				}
 			}
@@ -276,7 +276,7 @@ getAll();
 					document.getElementById("title_" + i).innerText = video["name"];
 					document.getElementById("author_" + i).innerText = video["user"]["name"];
 					document.getElementById("age_" + i).innerText = (new Date().getFullYear() - parseInt(video["created_time"].substring(0, 4))) +" years ago";
-					//vidata[i]["desc"] = video["description"];
+					document.getElementById("description_" + i).innerText = video["description"];
 					i++;
 				}
 			}
@@ -301,7 +301,7 @@ getAll();
 				document.getElementById("title_" + i).innerText = video["title"];
 				document.getElementById("author_" + i).innerText =  video["channel.name"];
 				document.getElementById("age_" + i).innerText = (new Date().getFullYear() - new Date(video["created_time"] * 1000).getFullYear()) + " years ago";
-				//vidata[i]["desc"] = video["description"];
+				document.getElementById("description_" + i).innerText = video["description"];
 				i++;
 			}
 		}
