@@ -1062,6 +1062,12 @@ select.form-control.bfh-countries:hover {
   -webkit-transform: scaleY(0);
   transform: scaleY(0);
 }
+.del_btn{
+	vertical-align:middle;
+	width: 20px;
+	height: 25px;
+	display: inline-block;
+}
 /*-- single --*/
 .single-main{
 	padding: 4em 1em 0 0;
