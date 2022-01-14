@@ -35,6 +35,7 @@ getAll();
 		document.getElementById('login').style.visibility = '';
 		document.getElementById('logout').style.visibility = 'hidden';
 		document.getElementById('playlistm').style.visibility = 'hidden';
+		playlistfront(false);
 	}
 	else
 	{
@@ -42,6 +43,7 @@ getAll();
 		document.getElementById('login').style.visibility = 'hidden';
 		document.getElementById('logout').style.visibility = '';
 		document.getElementById('playlistm').style.visibility = '';
+		playlistfront(true);
 	}
 	
 }	
@@ -202,7 +204,7 @@ getAll();
 							for (let video = 0; video < video_in_row; video++) {
 								var completelist = document.getElementById("row_" + row);
 								let nbr = row * 4 + video;
-								completelist.innerHTML += "<div class=\"col-md-3 resent-grid recommended-grid\" id=\"video_" + nbr + "\">\n<div class=\"resent-grid-img recommended-grid-img\">\n<a class=\"popup-daily_motion\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"link_thumb_" + nbr + "\"><img src=\"images/r1.jpg\" alt=\"\" class=\"thumbnail\" id=\"thumb_" + nbr + "\" /></a>\n<img src=\"images/add_playlist.png\" style=visibility:hidden class=\"playlist_add\" onClick=\"javascript:whatever()\" id=\"btn_add_" + nbr + "\" />\n<div class=\"time small-time\">\n<p id=\"length_" + nbr + "\">2:34</p>\n</div>\n<div class=\"clck small-clck\">\n<span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span>\n</div>\n</div>\n<div class=\"resent-grid-info recommended-grid-info video-info-grid\">\n<h5><a class=\"popup-daily_motion title\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"title_" + nbr + "\">Varius sit sed viverra viverra nullam nullam interdum metus</a>\n<div hidden id=\"description_" + nbr + "\">Descritpion of the video</div>\n</h5>\n<ul class=\"video_info_bot\">\n<li>\n<p class=\"author author-info\"><a href=\"#\" class=\"author\" id=\"author_" + nbr + "\">John Maniya</a></p>\n</li>\n<li class=\"right-list\">\n<p class=\"views views-info\" id=\"age_" + nbr + "\">2 years ago</p>\n</li>\n</ul>\n</div>\n</div>";
+								completelist.innerHTML += "<div class=\"col-md-3 resent-grid recommended-grid\" id=\"video_" + nbr + "\">\n<div class=\"resent-grid-img recommended-grid-img\">\n<a class=\"popup-daily_motion\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"link_thumb_" + nbr + "\"><img src=\"images/r1.jpg\" alt=\"\" class=\"thumbnail\" id=\"thumb_" + nbr + "\" /></a>\n<img src=\"images/add_playlist.png\" style=visibility:hidden class=\"playlist_add\" onClick=\"javascript:addPlaylist(" + nbr + ")\" id=\"btn_add_" + nbr + "\" />\n<div class=\"time small-time\">\n<p id=\"length_" + nbr + "\">2:34</p>\n</div>\n<div class=\"clck small-clck\">\n<span class=\"glyphicon glyphicon-time\" aria-hidden=\"true\"></span>\n</div>\n</div>\n<div class=\"resent-grid-info recommended-grid-info video-info-grid\">\n<h5><a class=\"popup-daily_motion title\" href=\"https://www.dailymotion.com/video/x870wq7\" id=\"title_" + nbr + "\">Varius sit sed viverra viverra nullam nullam interdum metus</a>\n<div hidden id=\"description_" + nbr + "\">Descritpion of the video</div>\n</h5>\n<ul class=\"video_info_bot\">\n<li>\n<p class=\"author author-info\"><a href=\"#\" class=\"author\" id=\"author_" + nbr + "\">John Maniya</a></p>\n</li>\n<li class=\"right-list\">\n<p class=\"views views-info\" id=\"age_" + nbr + "\">2 years ago</p>\n</li>\n</ul>\n</div>\n</div>";
 							}
 							completelist.innerHTML += "<div class=\"clearfix\"> </div>";
 						}
@@ -316,9 +318,57 @@ getAll();
 			return;
 			
 		}
-		function addPlaylist()
+		function addPlaylist(i)
 		{	
-			alert("test");
+			var link = document.getElementById("link_thumb_" + i).href;
+			var title = document.getElementById("title_" + i).innerText;
+			var thumb = document.getElementById("thumb_" + i).src;
+			var chname = document.getElementById("author_" + i).innerText;
+			var age = document.getElementById("age_" + i).innerText;
+			var description = document.getElementById("description_" + i).innerText;
+
+			var entry = 
+			{
+				"link" : link,
+				"title" : title,
+				"thumb" : thumb,
+				"chname" : chname,
+				"age" : age,
+				"description" : description	
+			};
+			var playlistData;
+			var playlistDataString = localStorage.getItem("playlistcol");
+			
+			if (playlistDataString == null)
+				playlistData = [];
+			else
+				playlistData = JSON.parse(playlistDataString);
+				playlistData.push(entry);
+
+			localStorage.setItem("playlistcol", JSON.stringify(playlistData));
+		}
+		function playlistfront(b)
+		{
+			let i;
+			
+			if(b==true)
+			{
+				for(i=0;i<30;i++)
+				{	
+					try{
+					document.getElementById('btn_add_' + i).style= '';
+					}
+					catch{}
+				}
+			}
+			else
+			{
+			try{
+				document.getElementById('btn_add_' + i).style = 'visibility :hidden';
+				}
+				catch{}
+			}
+		
 		}
 	</script>
 	<script type="module">
@@ -370,6 +420,7 @@ getAll();
 					document.getElementById('login').style.visibility = 'hidden';
 					document.getElementById('logout').style.visibility = '';
 					document.getElementById('playlistm').style.visibility = '';
+					playlistfront(true);
 					alert("Logged in! ");
 					document.getElementsByClassName("mfp-close")[0].click();
 				})
@@ -387,6 +438,7 @@ getAll();
 		document.getElementById('playlistm').style.visibility = 'hidden';
 		window.localStorage.removeItem('firebase:authUser');
 		window.indexedDB.deleteDatabase("firebaseLocalStorageDb");
+		playlistfront(false);
 			const auth = getAuth();
 			signOut(auth).then(() => {
 			alert("Sign-out successful !")
@@ -405,6 +457,13 @@ window.chck = function()
 		else
 			return false;
 	}
+}
+window.chckPlaylist = function()
+{
+	if(localStorage.getItem("playlistcol") == null)
+		return false;
+	else
+		return true;
 }
 
 	</script>
